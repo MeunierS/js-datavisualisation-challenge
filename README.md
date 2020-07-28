@@ -12,11 +12,11 @@ lien vers le repo énoncé du challenge : [içi](https://github.com/becodeorg/BX
 
 + HTML5
 + CSS3  
-+ JS
++ JS, JSON, AJAX
 
 ## Responsive
 
-?
+Déjà inclus dans les fichiers de base.
 
 ## Team
 
@@ -41,7 +41,13 @@ v1.0 : xx/07/2020
 
 + Junior Web Dev chez Becode
 
-## Screenshots
+## Approche
+
+1) inclure script.js à l'HTML
+2) dans script.js : get les données de [là](https://canvasjs.com/services/data/datapoints.php) via AJAX
+3) créer un graph live avec les données
+4) Mettre le gaph en dessous du h1
+5) Faire refresh le graph toutes les 1s.
 
 
 ## Credits
