@@ -308,7 +308,7 @@ let myChart2 = new Chart(ctx2, {
 				backgroundColor: randomColor(),
 			}, {
 				data: arrayStringToFloat(arrayWithoutElementAtIndex(table2[7], 0)),
-				label: table2[7][0],
+				label: "UK and Wales",
 				backgroundColor: randomColor(),
 			}, {
 				data: arrayStringToFloat(arrayWithoutElementAtIndex(table2[8], 0)),
