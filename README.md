@@ -35,6 +35,7 @@ v1.0 : xx/07/2020
 ## Historique
 
 + 27/07/2020 09h30 : création du readme, initialisation du repo, des dossiers et des fichiers basiques.
++ 30/07/2020 14h15 : Tableaux de la partie 1 réalisé.
 
 
 ## Poste occupé durant la Réalisation
