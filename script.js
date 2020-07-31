@@ -5,6 +5,11 @@ table = tableToJson(table);
 
 let table2 = document.getElementById("table2");
 table2 = tableToJson(table2);
+
+let dataPoints = [];
+let dataLabels = [];
+let dataY = [];
+
 //*Fonctions
 
 const arrayWithoutElementAtIndex = function (arr, index) {
@@ -43,38 +48,72 @@ function randomColor() {
 	return color;
 }
 
-//TODO AJAX request for h1
-let ourRequest = new XMLHttpRequest();
-ourRequest.open('Get', 'https://canvasjs.com/services/data/datapoints.php');
-ourRequest.onload = function () {
+function updateChart() {
+	$.getJSON("https://canvasjs.com/services/data/datapoints.php?xstart=" + (dataPoints.length + 1) + "&ystart=" + (dataPoints[dataPoints.length - 1].y) + "&length=1&type=json", function (data) {
+		$.each(data, function (key, value) {
+			dataPoints.push({
+				x: parseInt(value[0]),
+				y: parseInt(value[1])
+			});
+			for (i = 0; i < dataPoints.length; i++) {
+				dataLabels[i] = dataPoints[i].x;
+				dataY[i] = dataPoints[i].y;
+			}
+		});
 
-	let ourData = JSON.parse(ourRequest.responseText);
-	console.log(ourData);
+		setTimeout(function () {
+			let ctx3 = document.getElementById("canvas3");
+			let myChart3 = new Chart(ctx3, {
+				type: 'line',
+				data: {
+					labels: dataLabels,
+					datasets: [{
+						data: dataY,
+						label: "AJAX",
+						borderColor: "#000000",
+						fill: false
+					}]
+				},
+				options: {
+					title: {
+						display: true,
+						text: "Live Chart with dataPoints from External JSON"
+					}
+				}
+			});
+			updateChart()
+		}, 1000);
+	});
 
-};
-ourRequest.send();
-console.log (ourRequest);
+}
 
-document.getElementById("firstHeading").insertAdjacentHTML("afterend", '<canvas id="canvas3" height="400" width="400"></canvas>');
+function addData(chart, label, data) {
+	chart.data.labels.push(label);
+	chart.data.datasets.forEach((dataset) => {
+		dataset.data.push(data);
+	});
+}
 
-let ctx3 = document.getElementById("canvas3");
-let myChart3 = new Chart(ctx3, {
-	type: 'line',
-	data: {
-		labels: ourRequest[0],
-		datasets: [{
-			data: ourRequest[1], //! does not work
-			label: "AJAX",
-			borderColor: "#000000",
-			fill: false
-		}]
-	},
-	options: {
-		title: {
-			display: true,
-			text: 'AJAX'
-		}
+// * AJAX request for h1
+
+$.getJSON("https://canvasjs.com/services/data/datapoints.php?xstart=1&ystart=10&length=10&type=json", function (data) {
+	$.each(data, function (key, value) {
+		dataPoints.push({
+			x: value[0],
+			y: parseInt(value[1])
+		});
+	});
+
+	for (i = 0; i < dataPoints.length; i++) {
+		dataLabels[i] = dataPoints[i].x;
+		dataY[i] = dataPoints[i].y;
 	}
+	console.log(dataPoints);
+	console.log(dataLabels);
+	console.log(dataY);
+
+	document.getElementById("firstHeading").insertAdjacentHTML("afterend", '<canvas id="canvas3" height="400" width="400"></canvas>');
+	updateChart();
 });
 
 ///* Chart 1

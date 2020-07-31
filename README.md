@@ -30,12 +30,13 @@ Réalisation Solo
 
 Début : 27/07/2020
 
-v1.0 : xx/07/2020  
+v1.0 : 31/07/2020  
 
 ## Historique
 
 + 27/07/2020 09h30 : création du readme, initialisation du repo, des dossiers et des fichiers basiques.
 + 30/07/2020 14h15 : Tableaux de la partie 1 réalisé.
++ 31/07/2020 14:16 : Fin du projet avec l'ajout du graph sous ```<h1>```
 
 
 ## Poste occupé durant la Réalisation
@@ -45,10 +46,16 @@ v1.0 : xx/07/2020
 ## Approche
 
 1) inclure script.js à l'HTML
-2) dans script.js : get les données de [là](https://canvasjs.com/services/data/datapoints.php) via AJAX
-3) créer un graph live avec les données
-4) Mettre le gaph en dessous du h1
-5) Faire refresh le graph toutes les 1s.
+2) extraire les données des tables
+3) formater les données des tables
+4) créer la balise ``` <canvas>``` dans l'HTML
+5) réaliser un graph avec les données et le palcer dans la balise visée
+6) générer une couleur aléatoire pour chaque pays
+
+7) get les données de [là](https://canvasjs.com/services/data/datapoints.php) via AJAX
+8) créer un graph live avec les données
+9) Mettre le gaph en dessous du h1
+10) Faire refresh le graph toutes les 1s.
 
 
 ## Credits
